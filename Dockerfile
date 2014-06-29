@@ -1,9 +1,13 @@
-FROM aws_beanstalk/ubuntu:12.04
+FROM ubuntu:14.04
 
-# Add sample application
-ADD application.py /tmp/application.py
+ADD . /srv
+
+RUN apt-get update
+RUN apt-get install -y nodejs
+RUN apt-get install -y npm
+RUN cd /srv && npm install
 
 EXPOSE 8000
 
 # Run it
-ENTRYPOINT ["python", "/tmp/application.py"]
+ENTRYPOINT ["nodejs", "/srv"]
