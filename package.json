@@ -14,5 +14,11 @@
   "bugs": {
     "url": "https://github.com/kaiwalya/kom/issues"
   },
-  "homepage": "https://github.com/kaiwalya/kom"
+  "homepage": "https://github.com/kaiwalya/kom",
+  "devDependencies": {
+    "supervisor": "^0.6.0"
+  },
+  "dependencies": {
+    "restify": "^2.8.1"
+  }
 }
