@@ -16,9 +16,10 @@
   },
   "homepage": "https://github.com/kaiwalya/kom",
   "devDependencies": {
-    "supervisor": "^0.6.0"
+    "supervisor": "latest"
   },
   "dependencies": {
-    "restify": "^2.8.1"
+    "restify": "latest",
+    "async": "latest"
   }
 }
