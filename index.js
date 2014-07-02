@@ -12,6 +12,7 @@ server.use(function (req, res, callback) {
 
 server.use(function (req, res, callback) {
 	res.header('x-request-id', req.getId());
+	res.header('x-rooturl', req.kontext.rootUrl);
 	return callback();
 });
 
