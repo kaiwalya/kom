@@ -1,10 +1,6 @@
-FROM ubuntu:14.04
+FROM knkher/nodejs
 
 ADD . /srv
-
-RUN apt-get update
-RUN apt-get install -y nodejs
-RUN apt-get install -y npm
 RUN cd /srv && npm install
 
 EXPOSE 8000
