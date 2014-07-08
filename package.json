@@ -19,7 +19,7 @@
     "supervisor": "latest"
   },
   "dependencies": {
-    "restify": "latest",
-    "async": "latest"
+    "async": "^0.9.0",
+    "negotiator": "^0.4.7"
   }
 }
