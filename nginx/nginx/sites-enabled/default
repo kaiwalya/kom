@@ -1,12 +1,6 @@
 server {
-	listen 80;
-	location / {
-		proxy_pass https://kaiwalya-web.azurewebsites.net:443;
-	}
-}
-
-server {
 	listen 443 ssl;
+	server_name kaiwalya.com;
 	ssl_certificate private/cert.pem;
 	ssl_certificate_key private/key.pem;
 
@@ -19,4 +13,31 @@ server {
 	location / {
 		proxy_pass https://kaiwalya-web.azurewebsites.net:443;
 	}
+}
+
+server {
+	listen 80;
+	server_name kaiwalya.com;
+	return       301 https://kaiwalya.com$request_uri;
+}
+
+server {
+	listen 80;
+	server_name www.kaiwalya.com;
+	return       301 https://kaiwalya.com$request_uri;
+}
+
+server {
+	listen 443 ssl;
+	server_name www.kaiwalya.com;
+	ssl_certificate private/cert.pem;
+	ssl_certificate_key private/key.pem;
+
+	ssl_session_timeout 5m;
+
+	ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+	ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
+	ssl_prefer_server_ciphers on;
+
+	return       301 https://kaiwalya.com$request_uri;
 }
