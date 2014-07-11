@@ -1,0 +1,24 @@
+{
+  "name": "kaiwalya-site",
+  "version": "0.0.0",
+  "description": "Html and Javascript for kaiwalya.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaiwalya/kom.git"
+  },
+  "keywords": [
+    "kaiwalya"
+  ],
+  "author": "Kaiwalya Kher <kaiwalya@kaiwalya.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaiwalya/kom/issues"
+  },
+  "homepage": "https://github.com/kaiwalya/kom",
+  "devDependencies": {
+  }
+}
