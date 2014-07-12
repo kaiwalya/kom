@@ -2,7 +2,7 @@
   "name": "kaiwalya-site",
   "version": "0.0.0",
   "description": "Html and Javascript for kaiwalya.com",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,6 +19,8 @@
     "url": "https://github.com/kaiwalya/kom/issues"
   },
   "homepage": "https://github.com/kaiwalya/kom",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
+    "express": "^4.5.1"
   }
 }
