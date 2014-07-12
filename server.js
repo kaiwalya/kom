@@ -1,9 +1,15 @@
-var http = require('http');
-var util = require('util');
-var port = process.env.PORT || 1337;
-http.createServer(function(req, res) {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.write(req.method + " " + req.url + "\n");
-  res.end(util.inspect(req.headers));
-}).listen(port);
+var express = require('express');
+
+
+var app = express();
+
+app.get("/echo", function (req, res, next) {
+	var input = {
+		method: req.method,
+		url: req.url,
+		headers: req.headers
+	};
+	res.send(input);
+	return next();
+}).listen(process.env.PORT || 8000);
 

@@ -19,6 +19,8 @@
     "url": "https://github.com/kaiwalya/kom/issues"
   },
   "homepage": "https://github.com/kaiwalya/kom",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
+    "express": "^4.5.1"
   }
 }
