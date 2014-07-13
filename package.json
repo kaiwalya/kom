@@ -21,6 +21,7 @@
   "homepage": "https://github.com/kaiwalya/kom",
   "devDependencies": {},
   "dependencies": {
-    "express": "^4.5.1"
+    "express": "^4.5.1",
+    "yamljs": "^0.1.5"
   }
 }
