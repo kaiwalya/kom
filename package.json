@@ -21,11 +21,13 @@
   "homepage": "https://github.com/kaiwalya/kom",
   "devDependencies": {
     "cucumber": "^0.4.1",
-    "mocha": "^1.20.1"
+    "mocha": "^1.20.1",
+    "nodemon": "^1.2.1"
   },
   "dependencies": {
     "express": "^4.5.1",
     "yamljs": "^0.1.5",
-    "bunyan": "^0.23.1"
+    "bunyan": "^0.23.1",
+    "mime": "^1.2.11"
   }
 }

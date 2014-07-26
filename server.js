@@ -1,4 +1,9 @@
-var logger = require('bunyan').createLogger({name: "web", level: "debug"});
+var logger = (function () {
+	var bunyan = require('bunyan');
+	var logger = bunyan.createLogger({name: "web", level: "debug"});
+	return logger;
+})();
+
 
 var initLogger = logger.child({phase: "init"});
 initLogger.info("start");
