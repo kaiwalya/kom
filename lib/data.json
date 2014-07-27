@@ -1,0 +1,47 @@
+{
+	"@context": {
+		"sch": "http://schema.org",
+		"kom": "https://kaiwalya.com"
+	},
+	"@graph":[
+		{
+			"@type": ["sch:/Person", "sch:/ProfilePage", "sch:/AboutPage"],
+			"@id": "kom:/kaiwalya",
+			"sch:/givenName": "Kaiwalya",
+			"sch:/familyName": "Kher",
+			"sch:/name": "Kaiwalya Kher",
+			"sch:/jobTitle": "Computer Scientist",
+			"sch:/workLocation": "San Francisco",
+			"sch:/worksFor": "kom:/Adobe",
+			"sch:/url": "kom:/kaiwalya"
+		},
+		{
+			"@type": ["sch:/Corporation"],
+			"@id": "https://www.adobe.com/",
+			"tickerSymbol": "ADBE",
+			"sch:/name": "Adobe"
+		},
+		{
+			"@type": ["sch:/Code"],
+			"@id": "kom:/code",
+			"sch:/codeRepository": "https://github.com/kaiwalya/kom/tree/f/azure-site/",
+			"sch:/programmingLanauge": "javascript, html5",
+			"sch:/runtime": "nodejs",
+			"sch:/targetProduct": "kom:/",
+			"sch:/author": {"@id": "kom:/kaiwalya"}
+		},
+		{
+			"@type": ["sch:/WebApplication", "sch:/AboutPage", "sch:/Blog"],
+			"@id": "kom:/",
+			"sch:/author": {"@id": "kom:/kaiwalya"}
+		},
+		{
+			"@type": ["sch:/ProfilePage"],
+			"@id": "kom:kaiwalya_github",
+			"sch:/url": "https://www.github.com/kaiwalya",
+			"sch:/author": {"@id": "kom:/kaiwalya"}
+		}
+	]
+}
+	
+	
