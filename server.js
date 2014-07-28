@@ -1,18 +1,9 @@
 var logger = (function () {
-	var bunyan = require('bunyan');
-	var Bunyan2Loggly = require('bunyan-loggly').Bunyan2Loggly;
-	var logger = bunyan.createLogger({
-		name: "web",
-		streams: [{
-			type: "raw",
-			stream: new Bunyan2Loggly({
-				token: "2859ca7e-c72f-4afe-b0db-af244852882d",
-				subdomain: "kaiwalya"
-			})
-		}],
-		level: "debug"
+	return new (require('./lib/logger').Logger)({
+		token: "2859ca7e-c72f-4afe-b0db-af244852882d",
+		subdomain: "kaiwalya",
+		json: true
 	});
-	return logger;
 })();
 
 

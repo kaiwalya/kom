@@ -30,6 +30,6 @@
     "yamljs": "^0.1.5",
     "bunyan": "^0.23.1",
     "mime": "^1.2.11",
-    "bunyan-loggly": "0.0.5"
+    "loggly": "^1.0.4"
   }
 }
