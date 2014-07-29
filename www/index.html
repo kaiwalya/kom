@@ -1,65 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="https://gravatar.com/avatar/bbd496a3ef06322578111e5e848b5496">
+---
+layout: default
+---
 
-	<script src="./ext/jquery/dist/jquery.js" type="text/javascript"></script>
-	
-    <link rel="stylesheet" href="./ext/bootstrap/dist/css/bootstrap.css">
-	<link rel="stylesheet" href="./ext/bootstrap/dist/css/bootstrap-theme.css">
-	<script src="./ext/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
+<div class="home">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js" type="text/javascript"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular-route.js" type="text/javascript"></script>
-	<script src="./www.js" type="text/javascript"></script>
-	<title>kaiwalya's blog</title>
-</head>
-<body>
-	<div ng-app="www">
-		<div class="container">
-			<div class="row">
-				<nav class="navbar navbar-default" role="navigation">
-					<!--div class="container"-->
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="nav_menu">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<a class="navbar-brand" href="#">kaiwalya kher</a>
-						</div>
+  <h1>Posts</h1>
 
-						<div class="collapse navbar-collapse" id="nav_menu">
-							<ul class="nav navbar-nav">
-								<li><a href="/app/projects">Projects</a></li>
-							</ul>
-							<ul class="nav navbar-nav navbar-right">
-								<li class="dropdown">
-									<a class="dropdown-toggle" data-toggle="dropdown">
-										About
-										<span class="caret"></span>
-									</a>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="/app/aboutme">About Me</a></li>
-										<!--li><a href="/app/aboutsite">About this site</a></li-->
-									</ul>
-								</li>
-							</ul>
-						</div>
-					<!--/div-->
-				</nav>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-						<div ng-view>
-						</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
+  <ul class="posts">
+    {% for post in site.posts %}
+      <li>
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+        
+      </li>
+    {% endfor %}
+  </ul>
+
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>

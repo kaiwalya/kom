@@ -1,0 +1,10 @@
+# Site settings
+title: kaiwalya.com
+email: kaiwalya@kaiwalya.com
+description: "Homepage of Kaiwalya Kher"
+baseurl: ""
+url: "https://kaiwalya.com"
+
+# Build settings
+markdown: kramdown
+permalink: pretty
