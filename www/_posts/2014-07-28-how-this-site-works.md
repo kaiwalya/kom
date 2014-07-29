@@ -1,17 +1,17 @@
 ---
 layout: post
-title: "this site is powered by..."
-permalink: /how-it-works/
+title: "Inner workings of kaiwalya.com"
+permalink: /how-this-site-works/
 date:   2014-07-28 21:12:30
 ---
 
 
-### source
+### Source
 All source code related to this website can be found at [https://github.com/kaiwalya/kom](https://github.com/kaiwalya/kom). You can clone this repository using using the following command...
 
 	git clone https://github.com/kaiwalya/kom.git
 
-### basic overview
+### Basic Overview
 
 1.	[HTML/Javascript/CSS code](https://github.com/kaiwalya/kom/tree/f/azure-site/www) is managed using [Jekyll](http://jekyllrb.com/).
 

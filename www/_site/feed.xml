@@ -7,14 +7,14 @@
     <atom:link href="https://kaiwalya.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>this site is powered by...</title>
-        <description>&lt;h3 id=&quot;source&quot;&gt;source&lt;/h3&gt;
+        <title>Inner workings of kaiwalya.com</title>
+        <description>&lt;h3 id=&quot;source&quot;&gt;Source&lt;/h3&gt;
 &lt;p&gt;All source code related to this website can be found at &lt;a href=&quot;https://github.com/kaiwalya/kom&quot;&gt;https://github.com/kaiwalya/kom&lt;/a&gt;. You can clone this repository using using the following command…&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;git clone https://github.com/kaiwalya/kom.git
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;basic-overview&quot;&gt;basic overview&lt;/h3&gt;
+&lt;h3 id=&quot;basic-overview&quot;&gt;Basic Overview&lt;/h3&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -84,8 +84,8 @@
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         <pubDate>Mon, 28 Jul 2014 14:12:30 -0700</pubDate>
-        <link>https://kaiwalya.com/how-it-works/</link>
-        <guid isPermaLink="true">https://kaiwalya.com/how-it-works/</guid>
+        <link>https://kaiwalya.com/how-this-site-works/</link>
+        <guid isPermaLink="true">https://kaiwalya.com/how-this-site-works/</guid>
       </item>
     
   </channel>
