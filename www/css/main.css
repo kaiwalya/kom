@@ -169,6 +169,10 @@ a:visited { color: #205caa; }
 }
 
 
+.posts .post-tags {
+  display: block;
+}
+
 .posts .post-tag {
   display: inline-block;
   font-size: 15px;

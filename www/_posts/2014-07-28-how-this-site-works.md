@@ -4,7 +4,9 @@ title: "The inner workings of kaiwalya.com"
 permalink: /how-this-site-works/
 summary: "This article covers the implementation and deployment details of this website"
 tags:
-  - "this site"
+  - "node.js"
+  - "nginx"
+  - "azure"
 date:   2014-07-28 21:12:30
 ---
 
