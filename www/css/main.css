@@ -162,6 +162,21 @@ a:visited { color: #205caa; }
   color: #818181;
 }
 
+.posts .post-summary {
+  display: block;
+  font-size: 15px;
+  color: #818181;
+}
+
+
+.posts .post-tag {
+  display: inline-block;
+  font-size: 15px;
+  padding: 1px 5px 1px 5px;
+  background-color: #eee;
+  color: #818181;
+  border-radius: 5px;
+}
 
 /* Post styles */
 /* ----------------------------------------------------------*/

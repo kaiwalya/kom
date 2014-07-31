@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>kaiwalya.com</title>
+    <title>kaiwalya&#39;s journal</title>
     <description>Homepage of Kaiwalya Kher</description>
     <link>https://kaiwalya.com/</link>
     <atom:link href="https://kaiwalya.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>Inner workings of kaiwalya.com</title>
+        <title>The inner workings of kaiwalya.com</title>
         <description>&lt;h3 id=&quot;source&quot;&gt;Source&lt;/h3&gt;
 &lt;p&gt;All source code related to this website can be found at &lt;a href=&quot;https://github.com/kaiwalya/kom&quot;&gt;https://github.com/kaiwalya/kom&lt;/a&gt;. You can clone this repository using using the following command…&lt;/p&gt;
 

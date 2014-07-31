@@ -1,7 +1,10 @@
 ---
 layout: post
-title: "Inner workings of kaiwalya.com"
+title: "The inner workings of kaiwalya.com"
 permalink: /how-this-site-works/
+summary: "This article covers the implementation and deployment details of this website"
+tags:
+  - "this site"
 date:   2014-07-28 21:12:30
 ---
 
