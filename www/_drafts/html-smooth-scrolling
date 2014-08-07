@@ -1,8 +1,23 @@
 ---
 layout: post
-title: Smooth Scrolling
+title: Delightful Scrolling
 ---
 
+There are many reasons why scrolling is sometimes 'not so smooth'. One of the reasons for this is memory thrashing. 
 
+### What is scrolling
 
+Scrolling (derived from the word scroll) 
+
+### Simple implementation - View and Viewport
+
+Viewport with fully rendered view.
+
+### Memory efficient view
+
+Unload parts of the view which you do not want
+
+### Physics
+
+Dragging vs Flicks - force and mass
 
