@@ -1,3 +1,4 @@
 node_modules
 private
 
+newrelic_agent.log
