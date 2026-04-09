@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import photos from '../data/astrophotography.json';
+
+const assetsUrl = import.meta.env.ASSETS_URL;
 ---
 
 <BaseLayout title="Astrophotography" description="Deep-sky astrophotography by Kaiwalya Kher">
@@ -13,6 +15,7 @@ import photos from '../data/astrophotography.json';
   <div class="gallery">
     {photos.map((photo) => (
       <a href={photo.instagram} target="_blank" rel="noopener noreferrer" class="card">
+        <img src={`${assetsUrl}${photo.image}`} alt={photo.title} loading="lazy" />
         <div class="card-body">
           <h2>{photo.title}</h2>
           <p>{photo.description}</p>
@@ -43,7 +46,7 @@ import photos from '../data/astrophotography.json';
     display: block;
     border: 1px solid var(--color-border);
     border-radius: 6px;
-    padding: 1rem;
+    overflow: hidden;
     text-decoration: none;
     color: inherit;
     transition: border-color 0.15s;
@@ -54,16 +57,26 @@ import photos from '../data/astrophotography.json';
     text-decoration: none;
   }
 
+  .card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .card-body {
+    padding: 0.75rem;
+  }
+
   .card h2 {
-    font-size: 1rem;
-    margin: 0 0 0.5rem;
+    font-size: 0.9375rem;
+    margin: 0 0 0.25rem;
     color: var(--color-heading);
   }
 
   .card p {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     color: var(--color-muted);
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.25rem;
   }
 
   .date {
