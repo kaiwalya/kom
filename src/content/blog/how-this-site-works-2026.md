@@ -1,9 +1,6 @@
 ---
 title: "How this site works (2026 edition)"
 summary: "This site was rebuilt from scratch after being offline for over a decade. Here's what changed."
-tags:
-  - "astro"
-  - "meta"
 date: 2026-04-08
 draft: false
 ---

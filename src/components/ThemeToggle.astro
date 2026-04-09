@@ -13,6 +13,11 @@
   <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
   </svg>
+  <svg class="icon-auto" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+    <line x1="8" y1="21" x2="16" y2="21"></line>
+    <line x1="12" y1="17" x2="12" y2="21"></line>
+  </svg>
 </button>
 
 <style>
@@ -30,18 +35,25 @@
     color: var(--color-heading);
   }
 
-  :global([data-theme='dark']) .icon-sun { display: inline; }
-  :global([data-theme='dark']) .icon-moon { display: none; }
-  :global(:not([data-theme='dark'])) .icon-sun { display: none; }
-  :global(:not([data-theme='dark'])) .icon-moon { display: inline; }
+  .icon-sun, .icon-moon, .icon-auto { display: none; }
+
+  :global([data-theme='light']) .icon-sun { display: inline; }
+  :global([data-theme='dark']) .icon-moon { display: inline; }
+  :global([data-theme='auto']) .icon-auto { display: inline; }
 </style>
 
 <script>
+  const order = ['auto', 'light', 'dark'] as const;
+
   document.querySelector('.theme-toggle')?.addEventListener('click', () => {
     const html = document.documentElement;
-    const current = html.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
+    const current = html.getAttribute('data-theme') || 'auto';
+    const next = order[(order.indexOf(current as typeof order[number]) + 1) % order.length];
     html.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
+    if (next === 'auto') {
+      localStorage.removeItem('theme');
+    } else {
+      localStorage.setItem('theme', next);
+    }
   });
 </script>

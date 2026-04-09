@@ -1,10 +1,6 @@
 ---
 title: "The inner workings of kaiwalya.com"
 summary: "This article covers the implementation and deployment details of this website"
-tags:
-  - "node.js"
-  - "nginx"
-  - "azure"
 date: 2014-07-28
 draft: false
 ---

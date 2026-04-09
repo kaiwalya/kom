@@ -29,6 +29,21 @@
   --spacing: 1.5rem;
 }
 
+@media (prefers-color-scheme: dark) {
+  [data-theme='auto'] {
+    --color-bg: #181818;
+    --color-text: #c9c9c9;
+    --color-heading: #e0e0e0;
+    --color-muted: #888888;
+    --color-link: #6db3f2;
+    --color-link-hover: #8fc8f8;
+    --color-border: #333333;
+    --color-code-bg: #242424;
+    --color-code-text: #d08770;
+    --color-block-quote: #999999;
+  }
+}
+
 [data-theme='dark'] {
   --color-bg: #181818;
   --color-text: #c9c9c9;
