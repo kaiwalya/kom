@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import ContentCard from '../components/ContentCard.astro';
 import { SITE_NAME, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
+
+const assetsUrl = import.meta.env.ASSETS_URL;
 
 const posts = (await getCollection('blog', ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;
@@ -10,86 +12,105 @@ const posts = (await getCollection('blog', ({ data }) => {
 ---
 
 <BaseLayout title={SITE_NAME} description={SITE_DESCRIPTION}>
+  <div class="filter-tabs" role="tablist">
+    <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">all</button>
+    <button class="filter-tab" data-filter="tech" role="tab" aria-selected="false">tech</button>
+    <button class="filter-tab" data-filter="astrophotography" role="tab" aria-selected="false">astro</button>
+  </div>
+
   {posts.length === 0 && <p>No posts yet.</p>}
-  <ul class="post-list">
+
+  <ul class="card-grid" role="tabpanel">
     {posts.map((post) => (
-      <li class:list={['post-item', { draft: post.data.draft }]}>
-        <FormattedDate date={post.data.date} />
-        <h2>
-          <a href={`/blog/${post.id}/`}>{post.data.title}</a>
-        </h2>
-        {post.data.summary && <p class="summary">{post.data.summary}</p>}
-        {post.data.tags.length > 0 && (
-          <div class="tags">
-            {post.data.tags.map((tag) => (
-              <span class="tag">{tag}</span>
-            ))}
-          </div>
-        )}
+      <li data-type={post.data.type}>
+        <ContentCard
+          title={post.data.title}
+          date={post.data.date}
+          summary={post.data.summary}
+          tags={post.data.tags}
+          type={post.data.type}
+          slug={post.id}
+          image={post.data.image}
+          instagramLink={post.data.instagramLink}
+          draft={post.data.draft}
+          assetsUrl={assetsUrl}
+        />
       </li>
     ))}
   </ul>
 </BaseLayout>
 
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.filter-tab');
+  const items = document.querySelectorAll<HTMLLIElement>('.card-grid li');
+
+  function setFilter(filter: string) {
+    tabs.forEach((tab) => {
+      const isActive = tab.dataset.filter === filter;
+      tab.classList.toggle('active', isActive);
+      tab.setAttribute('aria-selected', String(isActive));
+    });
+
+    items.forEach((item) => {
+      const type = item.dataset.type;
+      item.style.display = filter === 'all' || type === filter ? '' : 'none';
+    });
+  }
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      setFilter(tab.dataset.filter!);
+      history.replaceState(null, '', tab.dataset.filter === 'all' ? '/' : `/?filter=${tab.dataset.filter}`);
+    });
+  });
+
+  const params = new URLSearchParams(window.location.search);
+  const initial = params.get('filter');
+  if (initial && ['tech', 'astrophotography'].includes(initial)) {
+    setFilter(initial);
+  }
+</script>
+
+<style is:global>
+  body {
+    max-width: 64rem;
+  }
+</style>
+
 <style>
-  .post-list {
+  .filter-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .filter-tab {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    text-transform: lowercase;
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
+    font-family: inherit;
+  }
+
+  .filter-tab:hover,
+  .filter-tab.active {
+    color: var(--color-heading);
+    border-bottom-color: var(--color-heading);
+  }
+
+  .card-grid {
     list-style: none;
     padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 1rem;
   }
 
-  .post-item {
-    margin-bottom: 2rem;
-  }
-
-  .post-item.draft {
-    opacity: 0.6;
-  }
-
-  .post-item.draft h2 a::after {
-    content: ' (draft)';
-    font-size: 0.75rem;
-    color: var(--color-muted);
-    font-weight: normal;
-  }
-
-  .post-item time {
-    display: block;
-    color: var(--color-muted);
-    font-size: 0.875rem;
-    margin-bottom: 0.125rem;
-  }
-
-  .post-item h2 {
-    margin: 0;
-    font-size: 1.25rem;
-  }
-
-  .post-item h2 a {
-    color: var(--color-heading);
-    text-decoration: none;
-  }
-
-  .post-item h2 a:hover {
-    color: var(--color-link);
-  }
-
-  .summary {
-    margin: 0.25rem 0 0;
-    color: var(--color-muted);
-    font-size: 0.9375rem;
-  }
-
-  .tags {
+  .card-grid li {
     display: flex;
-    gap: 0.5rem;
-    margin-top: 0.25rem;
-  }
-
-  .tag {
-    background-color: var(--color-code-bg);
-    padding: 0.1em 0.5em;
-    border-radius: 3px;
-    font-size: 0.75rem;
-    color: var(--color-muted);
   }
 </style>

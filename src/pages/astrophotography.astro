@@ -1,8 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import photos from '../data/astrophotography.json';
+import ContentCard from '../components/ContentCard.astro';
+import { getCollection } from 'astro:content';
 
 const assetsUrl = import.meta.env.ASSETS_URL;
+
+const photos = (await getCollection('blog', ({ data }) => {
+  const show = import.meta.env.PROD ? data.draft !== true : true;
+  return show && data.type === 'astrophotography';
+})).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <BaseLayout title="Astrophotography" description="Deep-sky astrophotography by Kaiwalya Kher">
@@ -12,19 +18,29 @@ const assetsUrl = import.meta.env.ASSETS_URL;
     All photos are also on <a href="https://www.instagram.com/knkher" target="_blank" rel="noopener noreferrer">Instagram</a>.
   </p>
 
-  <div class="gallery">
+  <ul class="card-grid">
     {photos.map((photo) => (
-      <a href={photo.instagram} target="_blank" rel="noopener noreferrer" class="card">
-        <img src={`${assetsUrl}${photo.image}`} alt={photo.title} loading="lazy" />
-        <div class="card-body">
-          <h2>{photo.title}</h2>
-          <p>{photo.description}</p>
-          <span class="date">{new Date(photo.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}</span>
-        </div>
-      </a>
+      <li>
+        <ContentCard
+          title={photo.data.title}
+          date={photo.data.date}
+          summary={photo.data.summary}
+          type="astrophotography"
+          slug={photo.id}
+          image={photo.data.image}
+          instagramLink={photo.data.instagramLink}
+          assetsUrl={assetsUrl}
+        />
+      </li>
     ))}
-  </div>
+  </ul>
 </BaseLayout>
+
+<style is:global>
+  body {
+    max-width: 64rem;
+  }
+</style>
 
 <style>
   h1 {
@@ -36,51 +52,15 @@ const assetsUrl = import.meta.env.ASSETS_URL;
     margin-bottom: 2rem;
   }
 
-  .gallery {
+  .card-grid {
+    list-style: none;
+    padding: 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
     gap: 1rem;
   }
 
-  .card {
-    display: block;
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    transition: border-color 0.15s;
-  }
-
-  .card:hover {
-    border-color: var(--color-link);
-    text-decoration: none;
-  }
-
-  .card img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .card-body {
-    padding: 0.75rem;
-  }
-
-  .card h2 {
-    font-size: 0.9375rem;
-    margin: 0 0 0.25rem;
-    color: var(--color-heading);
-  }
-
-  .card p {
-    font-size: 0.8125rem;
-    color: var(--color-muted);
-    margin: 0 0 0.25rem;
-  }
-
-  .date {
-    font-size: 0.75rem;
-    color: var(--color-muted);
+  .card-grid li {
+    display: flex;
   }
 </style>

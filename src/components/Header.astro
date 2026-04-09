@@ -6,7 +6,10 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="header">
-  <a href="/" class="site-title">{SITE_NAME}</a>
+  <div class="site-brand">
+    <a href="/" class="site-title">{SITE_NAME}</a>
+    <p class="site-tagline">Co-Founder & CTO at <a href="https://withjoy.com" target="_blank" rel="noopener noreferrer">Joy</a> | Empowering <a href="https://withjoy.com" target="_blank" rel="noopener noreferrer">Weddings</a> 💍 | Making Pizza Doughs 🍕 | Audio & Music 🎶 | <a href="/?filter=astrophotography">Deep Space</a> 🔭 | <a href="/?filter=tech">Tech</a></p>
+  </div>
   <nav class="nav">
     {NAV_ITEMS.map(({ label, href }) => (
       <a
@@ -40,6 +43,21 @@ const currentPath = Astro.url.pathname;
   .site-title:hover {
     color: var(--color-link);
     text-decoration: none;
+  }
+
+  .site-tagline {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin: 0;
+  }
+
+  .site-tagline a {
+    color: var(--color-muted);
+    text-decoration: underline;
+  }
+
+  .site-tagline a:hover {
+    color: var(--color-link);
   }
 
   .nav {

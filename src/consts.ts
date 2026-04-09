@@ -19,8 +19,7 @@ export const SOCIAL_LINKS = [
 ] as const;
 
 export const NAV_ITEMS = [
-  { label: 'blog', href: '/' },
-  { label: 'astro', href: '/astrophotography/' },
+  { label: 'home', href: '/' },
   { label: 'about', href: '/about/' },
   { label: 'resume', href: '/resume/' },
 ] as const;
