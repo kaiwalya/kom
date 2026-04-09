@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import resume from '../data/resume.json';
+---
+
+<BaseLayout title="Resume" description="Resume of Kaiwalya Kher — Computer Scientist">
+  <h1>Resume</h1>
+
+  <section>
+    <h2>Work Experience</h2>
+    {resume.work.map((job) => (
+      <div class="entry">
+        <h3>{job.title}, {job.company}</h3>
+        <span class="period">{job.period}</span>
+        <p>{job.description}</p>
+      </div>
+    ))}
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    {resume.education.map((edu) => (
+      <div class="entry">
+        <h3>{edu.degree}</h3>
+        <span class="period">{edu.institution} ({edu.period})</span>
+      </div>
+    ))}
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    {resume.projects.map((proj) => (
+      <div class="entry">
+        <h3>{proj.name}</h3>
+        <span class="period">{proj.period}</span>
+        <p>{proj.description}</p>
+      </div>
+    ))}
+  </section>
+
+  <section>
+    <h2>Tools & Technologies</h2>
+    <p><strong>Programming Languages:</strong> {resume.skills.languages}</p>
+    <p><strong>OS APIs:</strong> {resume.skills.apis}</p>
+    <p><strong>Other:</strong> {resume.skills.other}</p>
+  </section>
+
+  <section>
+    <h2>Activities</h2>
+    {resume.activities.map((act) => (
+      <div class="entry">
+        <h3>{act.title}</h3>
+        <p>{act.description}</p>
+      </div>
+    ))}
+  </section>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-top: 0;
+  }
+
+  section {
+    margin-bottom: 2rem;
+  }
+
+  .entry {
+    margin-bottom: 1.5rem;
+  }
+
+  .entry h3 {
+    margin-bottom: 0.125rem;
+    font-size: 1.05rem;
+  }
+
+  .period {
+    display: block;
+    color: var(--color-muted);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .entry p {
+    margin-bottom: 0;
+  }
+</style>

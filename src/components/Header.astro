@@ -1,0 +1,63 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import { SITE_NAME, NAV_ITEMS } from '../consts';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header">
+  <a href="/" class="site-title">{SITE_NAME}</a>
+  <nav class="nav">
+    {NAV_ITEMS.map(({ label, href }) => (
+      <a
+        href={href}
+        class:list={['nav-link', { active: currentPath === href || (href !== '/' && currentPath.startsWith(href)) }]}
+      >
+        {label}
+      </a>
+    ))}
+    <ThemeToggle />
+  </nav>
+</header>
+
+<style>
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .site-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-heading);
+    text-decoration: none;
+  }
+
+  .site-title:hover {
+    color: var(--color-link);
+    text-decoration: none;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    text-decoration: none;
+    text-transform: lowercase;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-heading);
+    text-decoration: none;
+  }
+</style>

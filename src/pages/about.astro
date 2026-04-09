@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { AUTHOR, SOCIAL_LINKS } from '../consts';
+---
+
+<BaseLayout title="About" description={`About ${AUTHOR.name} — ${AUTHOR.jobTitle}`}>
+  <h1>About Me</h1>
+  <p>
+    Hi! My name is Kaiwalya Kher. I love to dabble in many forms of engineering
+    and science but I have gained more proficiency in computers than any other
+    fields. I have professionally built software for over six years and continue
+    to do so now at Adobe in San Francisco.
+  </p>
+
+  <div class="links">
+    {SOCIAL_LINKS.map(({ label, href }) => (
+      <a href={href} target="_blank" rel="noopener noreferrer">{label}</a>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-top: 0;
+  }
+
+  .links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+</style>

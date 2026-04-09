@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import { SITE_NAME, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true;
+})).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title={SITE_NAME} description={SITE_DESCRIPTION}>
+  {posts.length === 0 && <p>No posts yet.</p>}
+  <ul class="post-list">
+    {posts.map((post) => (
+      <li class:list={['post-item', { draft: post.data.draft }]}>
+        <FormattedDate date={post.data.date} />
+        <h2>
+          <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+        </h2>
+        {post.data.summary && <p class="summary">{post.data.summary}</p>}
+        {post.data.tags.length > 0 && (
+          <div class="tags">
+            {post.data.tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        )}
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
+
+<style>
+  .post-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .post-item {
+    margin-bottom: 2rem;
+  }
+
+  .post-item.draft {
+    opacity: 0.6;
+  }
+
+  .post-item.draft h2 a::after {
+    content: ' (draft)';
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    font-weight: normal;
+  }
+
+  .post-item time {
+    display: block;
+    color: var(--color-muted);
+    font-size: 0.875rem;
+    margin-bottom: 0.125rem;
+  }
+
+  .post-item h2 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .post-item h2 a {
+    color: var(--color-heading);
+    text-decoration: none;
+  }
+
+  .post-item h2 a:hover {
+    color: var(--color-link);
+  }
+
+  .summary {
+    margin: 0.25rem 0 0;
+    color: var(--color-muted);
+    font-size: 0.9375rem;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+
+  .tag {
+    background-color: var(--color-code-bg);
+    padding: 0.1em 0.5em;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+  }
+</style>
