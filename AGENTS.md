@@ -17,7 +17,8 @@ This is the personal website of Kaiwalya Kher. It is an Astro 6 static site depl
 | `src/consts.ts` | Site name, author info, social links, nav items. Single source of truth for hardcoded values. |
 | `src/content.config.ts` | Blog collection schema (Zod). Defines frontmatter shape. |
 | `src/data/resume.json` | Structured resume data. Rendered by `pages/resume.astro`. |
-| `src/data/astrophotography.json` | Gallery entries. Each has title, description, date, instagram link, and S3 image path. |
+| `src/data/projects/registry.json` | Blog pipeline registry. Tracked repos and pipeline state. |
+| `src/data/projects/AGENTS.md` | Blog pipeline documentation. |
 | `.github/workflows/deploy.yml` | CI/CD. Builds with Astro, deploys to GitHub Pages on push to `main`. Env vars are set here too. |
 
 ## Styling
@@ -39,7 +40,9 @@ This is the personal website of Kaiwalya Kher. It is an Astro 6 static site depl
 
 **Add a blog post**: Create `src/content/blog/<slug>.md` with title, date, summary, draft fields.
 
-**Add an astrophotography image**: Upload JPEG to `s3://assets.kaiwalya.com/astrophotography/`, then add an entry to `src/data/astrophotography.json`.
+**Add an astrophotography image**: Upload JPEG to `s3://assets.kaiwalya.com/astrophotography/`, then add a markdown file in `src/content/blog/` with `type: astrophotography` frontmatter.
+
+**Run the blog update pipeline**: See `src/data/projects/AGENTS.md` for full docs.
 
 **Deploy**: Push to `main`. GitHub Actions handles the rest.
 
