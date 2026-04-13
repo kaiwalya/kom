@@ -1,5 +1,5 @@
 {
-  "lastRunAt": null,
+  "lastRunAt": "2026-04-13",
   "repos": [
     {
       "id": "kaansen",
@@ -10,7 +10,7 @@
       "description": "Custom PCB audio distribution system with ESP32/STM32, DSP matrix mixing.",
       "tags": ["project", "hardware", "esp32", "stm32", "audio", "dsp"],
       "tier": "strong",
-      "lastCheckedCommit": null,
+      "lastCheckedCommit": "69b52712c9eb330eb9d59f7c6396e2898e8e26fe",
       "relatedRepos": [],
       "notes": "Multiple custom PCBs, Mermaid arch diagrams in README. Rich enough for 2-3 posts."
     },
@@ -23,7 +23,7 @@
       "description": "ESP32-based home automation using Thread networking and Matter protocol.",
       "tags": ["project", "hardware", "esp32", "thread", "matter", "home-automation"],
       "tier": "strong",
-      "lastCheckedCommit": null,
+      "lastCheckedCommit": "5134a72ca937e252be321fb085ef4cc22a1b696b",
       "relatedRepos": [],
       "notes": "Thread + Matter is cutting-edge IoT. Multiple firmware targets, nanopb protobuf messaging."
     },
@@ -36,7 +36,7 @@
       "description": "Arduino-based automated rain protection canopy for a telescope.",
       "tags": ["project", "hardware", "arduino", "astronomy", "automation"],
       "tier": "strong",
-      "lastCheckedCommit": null,
+      "lastCheckedCommit": "fbb9a6c406cff8f25c66a3693673212b19679b37",
       "relatedRepos": [],
       "notes": "Ties astrophotography hobby with embedded systems. Clean HAL abstraction layer."
     },
@@ -49,7 +49,7 @@
       "description": "User-space fiber scheduler with hand-written x86 assembly for context switching.",
       "tags": ["project", "systems", "cpp", "assembly", "concurrency"],
       "tier": "strong",
-      "lastCheckedCommit": null,
+      "lastCheckedCommit": "98f438b7976d0b76adc6d83e57a79cf10191cadd",
       "relatedRepos": [],
       "notes": "Hand-rolled x86 assembly (32-bit and 64-bit), custom stack management. Timeless systems topic."
     },
@@ -62,7 +62,7 @@
       "description": "Automated trading bot with Rust backend (Axum + GraphQL + SeaORM) and React frontend.",
       "tags": ["project", "rust", "react", "graphql", "finance"],
       "tier": "maybe",
-      "lastCheckedCommit": null,
+      "lastCheckedCommit": "6933482bc02458b6c701ebcbc0f59713224ce18a",
       "relatedRepos": [],
       "notes": "Full-stack DDD architecture. Potentially sensitive — user should review what to share."
     },
@@ -75,7 +75,7 @@
       "description": "Audio signal processing with I/O grid and processor pipeline in Zig.",
       "tags": ["project", "zig", "audio", "dsp"],
       "tier": "maybe",
-      "lastCheckedCommit": null,
+      "lastCheckedCommit": "0600cc0c94303ae3e2cfec81e88e5229395764f3",
       "relatedRepos": [],
       "notes": "Niche intersection of Zig and audio. Single-day burst of work but interesting approach."
     },
@@ -88,7 +88,7 @@
       "description": "INDI client for telescope control in TypeScript and Rust.",
       "tags": ["project", "typescript", "rust", "astronomy", "indi"],
       "tier": "maybe",
-      "lastCheckedCommit": null,
+      "lastCheckedCommit": "ba4e9e9b006b02003b4e952e3a37868a09fa2ed8",
       "relatedRepos": ["kaiwalya/rastro"],
       "notes": "Two repos forming one logical project. Rastro (Rust) default branch is master. Multi-language evolution story."
     },
@@ -101,7 +101,7 @@
       "description": "Peltier-based wine cooler with predictive temperature control via Arduino.",
       "tags": ["project", "hardware", "arduino"],
       "tier": "maybe",
-      "lastCheckedCommit": null,
+      "lastCheckedCommit": "dad684f894474af1626c3e1520abe38f6437f4f3",
       "relatedRepos": [],
       "notes": "Charming weekend project. Predictive cooling approach is a nice touch."
     }
