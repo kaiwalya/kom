@@ -23,7 +23,7 @@ const posts = (await getCollection('blog', ({ data }) => {
 
   <ul class="card-grid" role="tabpanel">
     {posts.map((post) => (
-      <li data-type={post.data.type}>
+      <li data-types={post.data.type.join(',')}>
         <ContentCard
           title={post.data.title}
           date={post.data.date}
@@ -54,8 +54,8 @@ const posts = (await getCollection('blog', ({ data }) => {
     });
 
     items.forEach((item) => {
-      const type = item.dataset.type;
-      item.style.display = filter === 'all' || type === filter ? '' : 'none';
+      const types = item.dataset.types?.split(',') ?? [];
+      item.style.display = filter === 'all' || types.includes(filter) ? '' : 'none';
     });
   }
 

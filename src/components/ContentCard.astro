@@ -4,7 +4,7 @@ interface Props {
   date: Date;
   summary?: string;
   tags?: string[];
-  type: 'tech' | 'astrophotography' | 'sound';
+  type: ('tech' | 'astrophotography' | 'sound')[];
   slug: string;
   image?: string;
   instagramLink?: string;
@@ -19,8 +19,8 @@ const href = hasBody ? `/blog/${slug}/` : instagramLink;
 const isExternal = !hasBody;
 ---
 
-<a href={href} class:list={['card', `card--${type}`, { draft }]} {...isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}}>
-  {type === 'astrophotography' && image && (
+<a href={href} class:list={['card', ...type.map(t => `card--${t}`), { draft }]} {...isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}}>
+  {type.includes('astrophotography') && image && (
     <img src={`${assetsUrl}${image}`} alt={title} loading="lazy" />
   )}
   <div class="card-body">

@@ -9,7 +9,10 @@ const blog = defineCollection({
     summary: z.string().optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
-    type: z.enum(['tech', 'astrophotography', 'sound']).default('tech'),
+    type: z.union([
+      z.array(z.enum(['tech', 'astrophotography', 'sound'])),
+      z.enum(['tech', 'astrophotography', 'sound']).transform((v) => [v]),
+    ]).default(['tech']),
     instagramLink: z.string().url().optional(),
     image: z.string().optional(),
   }),

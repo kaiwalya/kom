@@ -7,7 +7,7 @@ const assetsUrl = import.meta.env.ASSETS_URL;
 
 const photos = (await getCollection('blog', ({ data }) => {
   const show = import.meta.env.PROD ? data.draft !== true : true;
-  return show && data.type === 'astrophotography';
+  return show && data.type.includes('astrophotography');
 })).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
@@ -25,7 +25,7 @@ const photos = (await getCollection('blog', ({ data }) => {
           title={photo.data.title}
           date={photo.data.date}
           summary={photo.data.summary}
-          type="astrophotography"
+          type={photo.data.type}
           slug={photo.id}
           image={photo.data.image}
           instagramLink={photo.data.instagramLink}

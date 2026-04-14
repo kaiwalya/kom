@@ -3,7 +3,7 @@ title: "Hifi — Audio Processing in Zig"
 summary: "Experimenting with audio signal processing using Zig's low-level control."
 date: 2024-03-13
 tags: [project, zig, audio, dsp]
-type: sound
+type: [tech, sound]
 draft: false
 ---
 
