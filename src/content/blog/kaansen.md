@@ -4,7 +4,7 @@ summary: "Designing a multi-zone audio distribution system with custom PCBs, ESP
 date: 2026-02-05
 tags: [project, hardware, esp32, stm32, audio, dsp, kicad]
 type: tech
-draft: true
+draft: false
 ---
 
 Kaansen is a whole-home audio system I'm building from scratch — Bluetooth receiver, custom PCBs, and an STM32-based DAC chain. The prototype path (phone → ESP32 → STM32 → DAC) produces audio. The custom PCB is designed but not yet integrated, and there are known issues with the noise floor and occasional clicks on the prototype.

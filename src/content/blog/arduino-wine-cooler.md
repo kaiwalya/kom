@@ -4,7 +4,7 @@ summary: "A Peltier-based wine cooler with predictive temperature control."
 date: 2021-06-03
 tags: [project, hardware, arduino]
 type: tech
-draft: true
+draft: false
 ---
 
 A Peltier-based wine cooler with predictive temperature control, built on an Arduino. It works, but Peltier physics impose a hard constraint: it can't maintain more than about 12–15°F difference from ambient. Fine for wine storage in a temperate room; not useful as a refrigerator.

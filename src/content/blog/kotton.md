@@ -4,7 +4,7 @@ summary: "Writing a user-space fiber scheduler with x86 assembly for context swi
 date: 2013-10-25
 tags: [project, systems, cpp, assembly, concurrency]
 type: tech
-draft: true
+draft: false
 ---
 
 Kotton is a user-space fiber scheduler written in October 2013 as an educational exercise. The goal was understanding what the OS actually does when it switches between threads — not building something for production use.

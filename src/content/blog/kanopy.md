@@ -4,7 +4,7 @@ summary: "An Arduino-based system that automatically protects a telescope from r
 date: 2025-09-10
 tags: [project, hardware, arduino, astronomy, automation]
 type: tech
-draft: true
+draft: false
 ---
 
 Imaging sessions run overnight. If it starts raining at 2am, you find out the next morning when you go to close the session.

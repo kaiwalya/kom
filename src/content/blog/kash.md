@@ -4,7 +4,7 @@ summary: "Building an automated trading system with Rust, GraphQL, and a React f
 date: 2025-12-10
 tags: [project, rust, react, graphql, finance, trading]
 type: tech
-draft: true
+draft: false
 ---
 
 Kash is an architecture exercise — a trading system backend in Rust with a React frontend, built to explore domain-driven design and clean service boundaries. Whether the backtesting actually produces correct results is uncertain; this is not something I run against real money.

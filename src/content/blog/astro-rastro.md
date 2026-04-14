@@ -4,7 +4,7 @@ summary: "Building INDI telescope control clients in TypeScript and Rust."
 date: 2022-03-15
 tags: [project, typescript, rust, astronomy, indi]
 type: tech
-draft: true
+draft: false
 ---
 
 The first four photos on this site — Great Orion Nebula through Rosette Nebula — were captured with [Ekos](https://stellarmate.com/ekos.html). The Heart Nebula mosaic too, since my software can't do mosaics. Everything from the Crab Nebula onward was captured using the TypeScript system described here. Processing was done with [AstroPixelProcessor](https://www.astropixelprocessor.com/) throughout, except the last two images (Heart Nebula IC 1805 and Pelican Nebula) which used [PixInsight](https://pixinsight.com/). The Rust version (`rastro`) is an incomplete rewrite. This post covers both.

@@ -4,7 +4,7 @@ summary: "Experimenting with audio signal processing using Zig's low-level contr
 date: 2024-03-13
 tags: [project, zig, audio, dsp]
 type: tech
-draft: true
+draft: false
 ---
 
 Hifi is an exploration of audio signal processing in [Zig](https://ziglang.org/). Audio I/O works — sound flows from input through the processor chain to output. It's an intro-to-Zig project, not a finished tool.

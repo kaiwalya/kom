@@ -4,7 +4,7 @@ summary: "Building a Thread mesh network with ESP32 devices and bridging it to M
 date: 2026-01-18
 tags: [project, hardware, esp32, thread, matter, home-automation, iot]
 type: tech
-draft: true
+draft: false
 ---
 
 This project started with BLE. Then I deleted all of it.
