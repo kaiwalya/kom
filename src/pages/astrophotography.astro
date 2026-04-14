@@ -30,6 +30,7 @@ const photos = (await getCollection('blog', ({ data }) => {
           image={photo.data.image}
           instagramLink={photo.data.instagramLink}
           assetsUrl={assetsUrl}
+          hasBody={!!photo.body?.trim()}
         />
       </li>
     ))}

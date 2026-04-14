@@ -3,7 +3,7 @@ title: "Telescope Control Software and the INDI Protocol"
 summary: "Building INDI telescope control clients in TypeScript and Rust."
 date: 2022-03-15
 tags: [project, typescript, rust, astronomy, indi]
-type: tech
+type: astrophotography
 draft: false
 ---
 

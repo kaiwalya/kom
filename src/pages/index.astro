@@ -16,6 +16,7 @@ const posts = (await getCollection('blog', ({ data }) => {
     <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">all</button>
     <button class="filter-tab" data-filter="tech" role="tab" aria-selected="false">tech</button>
     <button class="filter-tab" data-filter="astrophotography" role="tab" aria-selected="false">astro</button>
+    <button class="filter-tab" data-filter="sound" role="tab" aria-selected="false">sound</button>
   </div>
 
   {posts.length === 0 && <p>No posts yet.</p>}
@@ -34,6 +35,7 @@ const posts = (await getCollection('blog', ({ data }) => {
           instagramLink={post.data.instagramLink}
           draft={post.data.draft}
           assetsUrl={assetsUrl}
+          hasBody={!!post.body?.trim()}
         />
       </li>
     ))}
@@ -66,7 +68,7 @@ const posts = (await getCollection('blog', ({ data }) => {
 
   const params = new URLSearchParams(window.location.search);
   const initial = params.get('filter');
-  if (initial && ['tech', 'astrophotography'].includes(initial)) {
+  if (initial && ['tech', 'astrophotography', 'sound'].includes(initial)) {
     setFilter(initial);
   }
 </script>

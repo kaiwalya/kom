@@ -3,7 +3,7 @@ title: "Kaansen — Building a Whole-Home Audio System"
 summary: "Designing a multi-zone audio distribution system with custom PCBs, ESP32, STM32, and DSP matrix mixing."
 date: 2026-02-05
 tags: [project, hardware, esp32, stm32, audio, dsp, kicad]
-type: tech
+type: sound
 draft: false
 ---
 

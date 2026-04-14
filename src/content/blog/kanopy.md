@@ -3,7 +3,7 @@ title: "Kanopy — Automating Telescope Rain Protection"
 summary: "An Arduino-based system that automatically protects a telescope from rain."
 date: 2025-09-10
 tags: [project, hardware, arduino, astronomy, automation]
-type: tech
+type: astrophotography
 draft: false
 ---
 

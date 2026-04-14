@@ -5,9 +5,9 @@ import BlogPost from '../../layouts/BlogPost.astro';
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => {
     const show = import.meta.env.PROD ? data.draft !== true : true;
-    return show && data.type === 'tech';
+    return show;
   });
-  return posts.map((post) => ({
+  return posts.filter((post) => post.body?.trim()).map((post) => ({
     params: { slug: post.id },
     props: post,
   }));

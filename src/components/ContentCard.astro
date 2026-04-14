@@ -4,18 +4,19 @@ interface Props {
   date: Date;
   summary?: string;
   tags?: string[];
-  type: 'tech' | 'astrophotography';
+  type: 'tech' | 'astrophotography' | 'sound';
   slug: string;
   image?: string;
   instagramLink?: string;
   draft?: boolean;
   assetsUrl: string;
+  hasBody?: boolean;
 }
 
-const { title, date, summary, tags = [], type, slug, image, instagramLink, draft, assetsUrl } = Astro.props;
+const { title, date, summary, tags = [], type, slug, image, instagramLink, draft, assetsUrl, hasBody = true } = Astro.props;
 
-const href = type === 'astrophotography' ? instagramLink : `/blog/${slug}/`;
-const isExternal = type === 'astrophotography';
+const href = hasBody ? `/blog/${slug}/` : instagramLink;
+const isExternal = !hasBody;
 ---
 
 <a href={href} class:list={['card', `card--${type}`, { draft }]} {...isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}}>
