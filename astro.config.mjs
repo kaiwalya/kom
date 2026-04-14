@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
+import sitemap from '@astrojs/sitemap';
 
 const env = loadEnv(process.env.NODE_ENV ?? '', process.cwd(), '');
 
@@ -14,4 +15,5 @@ if (!env.ASSETS_URL) {
 export default defineConfig({
   site: env.SITE_URL,
   output: 'static',
+  integrations: [sitemap()],
 });
