@@ -164,6 +164,73 @@ img {
   height: auto;
 }
 
+/* Callouts */
+.callout {
+  border-left: 3px solid var(--color-link);
+  background: var(--color-code-bg);
+  padding: 0.75rem 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.callout > :first-child {
+  margin-top: 0;
+}
+
+.callout > :last-child {
+  margin-bottom: 0;
+}
+
+.callout-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-link);
+  margin-bottom: 0.35rem;
+}
+
+/* Parallel two-column layout for side-by-side analogies */
+.parallel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 56rem) {
+  .parallel {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .parallel > .col + .col {
+    border-left: 1px solid var(--color-border);
+    padding-left: 2rem;
+  }
+}
+
+.parallel .col-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.parallel .col > :first-child + * {
+  margin-top: 0.5rem;
+}
+
+.parallel .col p:last-child,
+.parallel .col > :last-child {
+  margin-bottom: 0;
+}
+
 /* Table */
 table {
   width: 100%;

@@ -2,6 +2,8 @@
 import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
 import sitemap from '@astrojs/sitemap';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 const env = loadEnv(process.env.NODE_ENV ?? '', process.cwd(), '');
 
@@ -16,4 +18,8 @@ export default defineConfig({
   site: env.SITE_URL,
   output: 'static',
   integrations: [sitemap()],
+  markdown: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
+  },
 });

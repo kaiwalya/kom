@@ -214,6 +214,6 @@ Tests use `std.testing.allocator`, which is a leak-detecting allocator. Any allo
 
 Six commits in, audio flows from input through the processor chain to output. Audible results. The grid wiring, vtable dispatch, SIMD processing, and C interop are all in place.
 
-The sweep processor is there but limited. Merge and split work for simple cases. No README, no tests beyond allocator discipline. It is a proof of concept for one question: whether Zig's comptime and explicit allocation model are a reasonable fit for a [DSP](https://en.wikipedia.org/wiki/Digital_signal_processing) graph — the same underlying approach used in professional DAWs and audio plugins.
+The sweep processor is there but limited — and getting it to produce the right pitch at all involved a math gotcha worth its own post: [phase is the integral of frequency](/blog/hifi-sweep). Merge and split work for simple cases. No README, no tests beyond allocator discipline. It is a proof of concept for one question: whether Zig's comptime and explicit allocation model are a reasonable fit for a [DSP](https://en.wikipedia.org/wiki/Digital_signal_processing) graph — the same underlying approach used in professional DAWs and audio plugins.
 
 They are. And building it surfaces the implementation details that other languages abstract away: vtable layout, SIMD alignment requirements, calling conventions, allocator lifetimes. Working in Zig means those details are not hidden — they are just part of the code.
