@@ -13,7 +13,7 @@ Except it did not work. The pitch climbed at twice the slope it should have, and
 
 The cause turned out to be a piece of math that looks trivial in the constant-frequency case but is sneakily different once the frequency starts moving. The fix is small, but the insight behind it changed how I think about sine waves in general. The punchline: $\sin(2\pi\,\theta(t))$ is a better mental model of a tone than the textbook $\sin(2\pi f t)$, and here's why. Along the way I'll line the problem up next to a car driving down a road, because the exact same mistake on the linear side would be obvious to anyone.
 
-From the [Hifi](/blog/hifi) project, a Zig audio experiment. The offending file is [`src/processor/sweep.zig`](https://github.com/kaiwalya/hifi/blob/master/src/processor/sweep.zig) in [kaiwalya/hifi](https://github.com/kaiwalya/hifi).
+From the [Hifi](/blog/hifi) project, a Zig audio experiment. The relevant code is [`src/processor/sweep.zig`](https://github.com/kaiwalya/hifi/blob/0600cc0/src/processor/sweep.zig#L42-L49) in [kaiwalya/hifi](https://github.com/kaiwalya/hifi) (pinned to commit `0600cc0`, lines 42–49 show the fixed integral).
 
 ### The analogy, up front
 
@@ -258,5 +258,38 @@ The argument to $\sin$ is always the *phase* $\theta(t)$: the running total of h
 Framed this way, the question "what sample do I emit at time $t$?" stops being a math problem about multiplying $f$ and $t$. It becomes a bookkeeping problem: *track the phase*. At every moment, the phase advances by whatever the current frequency is. Constant tone, sweep, vibrato: the machinery is the same. You maintain a running $\theta$ and you take its sine. The sweep gotcha cannot occur because $f(t)\cdot t$ never enters the picture. You never multiply a rate by an elapsed time at all.
 
 In code, this is usually a *phase accumulator* (the same idea that sits at the heart of a numerically controlled oscillator, or NCO): one variable that increments by $f \cdot \Delta t$ each sample, and stays in $[0, 1)$. Conceptually, it is an odometer for the sine wave.
+
+Side by side, the two versions look almost the same. One line changes:
+
+<div class="parallel">
+<div class="col">
+<span class="col-label">Wrong: <code>sin(2π f t)</code></span>
+
+```
+for each sample at time t:
+    f = f_min + (f_max - f_min) * (t / duration)
+    output = sin(2 * pi * f * t)
+```
+
+It reads fine. Every line is individually correct. The bug is only visible once you ask what `f * t` *means* when `f` has been changing the whole time.
+
+</div>
+<div class="col">
+<span class="col-label">Right: <code>sin(2π θ(t))</code></span>
+
+```
+phase = 0
+for each sample at time t, step dt:
+    f = f_min + (f_max - f_min) * (t / duration)
+    phase += f * dt
+    output = sin(2 * pi * phase)
+```
+
+The quantity `f * t` has vanished. Phase is a running sum of tiny increments, each taken at whatever the frequency happened to be *at that moment*.
+
+</div>
+</div>
+
+The Hifi version takes a closed-form shortcut, using the known integral of a linear ramp rather than a per-sample accumulator, but the idea is identical. See [`src/processor/sweep.zig`](https://github.com/kaiwalya/hifi/blob/0600cc0/src/processor/sweep.zig#L42-L49) (pinned to commit `0600cc0`). The comment above the formula even spells out the derivation: `ng_disp = integrate ng_v`.
 
 See [the main Hifi post](/blog/hifi) for the surrounding architecture: SIMD vectors, the processor graph, why Zig for audio.
