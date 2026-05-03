@@ -73,6 +73,8 @@ draft: false
 
 **New astrophotography image**: Upload to S3, add entry to `src/data/astrophotography.json`.
 
+**Inline images in blog posts**: SVGs go in `public/blog/<slug>/`; raster images (PNG, JPEG) go to S3 under `s3://assets.kaiwalya.com/blog/<slug>/` and are referenced by absolute URL. See `AGENTS.md` for the upload command and full convention.
+
 ## Theme
 
 Three-state toggle: auto (follows system preference), light, dark. Persists to `localStorage`. Vanilla CSS with custom properties.

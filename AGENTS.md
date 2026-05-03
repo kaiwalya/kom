@@ -42,6 +42,21 @@ This is the personal website of Kaiwalya Kher. It is an Astro 6 static site depl
 
 **Add an astrophotography image**: Upload JPEG to `s3://assets.kaiwalya.com/astrophotography/`, then add a markdown file in `src/content/blog/` with `type: astrophotography` frontmatter.
 
+**Add an inline image to a blog post body**:
+
+- **SVG**: drop it in `public/blog/<slug>/<file>.svg` and reference it as `/blog/<slug>/<file>.svg`. Lives in the repo.
+- **Raster (PNG, JPEG, etc.)**: upload to S3 *first*, then paste the absolute URL into the markdown. Raster images do not live in the repo. Upload command:
+
+  ```
+  aws s3 cp <local-file> s3://assets.kaiwalya.com/blog/<slug>/<file>.png \
+    --content-type image/png \
+    --cache-control "public, max-age=300"
+  ```
+
+  Then reference it as `<img src="https://s3.us-west-2.amazonaws.com/assets.kaiwalya.com/blog/<slug>/<file>.png" ... />`. The path-style URL (`s3.us-west-2.amazonaws.com/assets.kaiwalya.com/...`) is load-bearing — `assets.kaiwalya.com` is a bucket name, not a CNAME, so `https://assets.kaiwalya.com/...` would 404. Don't "clean it up." `--cache-control max-age=300` keeps re-uploads from getting stuck behind stale browser caches during editing.
+
+  Source of truth for the original PNG/JPEG should be the project that produced it (e.g. the KiCad project for a schematic). S3 is CDN, not backup.
+
 **Run the blog update pipeline**: See `src/data/projects/AGENTS.md` for full docs.
 
 **Deploy**: Push to `main`. GitHub Actions handles the rest.

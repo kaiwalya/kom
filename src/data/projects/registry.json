@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-04-13",
+  "lastRunAt": "2026-05-02",
   "repos": [
     {
       "id": "kaansen",
@@ -23,7 +23,7 @@
       "description": "ESP32-based home automation using Thread networking and Matter protocol.",
       "tags": ["project", "hardware", "esp32", "thread", "matter", "home-automation"],
       "tier": "strong",
-      "lastCheckedCommit": "5134a72ca937e252be321fb085ef4cc22a1b696b",
+      "lastCheckedCommit": "4beeb7a1175eb9a5b94dc20a3c185b8a530f71c4",
       "relatedRepos": [],
       "notes": "Thread + Matter is cutting-edge IoT. Multiple firmware targets, nanopb protobuf messaging."
     },
