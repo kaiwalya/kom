@@ -4,7 +4,7 @@ summary: "A non-latching relay was draining a 10000 mAh power bank in 36 hours. 
 date: 2026-05-02
 tags: [project, hardware, esp32, thread, kicad, electronics, home-automation]
 type: tech
-draft: true
+draft: false
 ---
 
 The end-device node in [kunjctl](/blog/kunjctl) is supposed to run on a battery. The whole reason it deep-sleeps for 15 seconds out of every 18 is to make the battery last. The radio is off 99% of the time. The CPU runs at 32 MHz. The firmware is careful about every microamp.
